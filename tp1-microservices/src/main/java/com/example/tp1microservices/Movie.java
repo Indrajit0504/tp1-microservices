@@ -9,6 +9,8 @@ public class Movie {
     private String director;
     private String synopsis;
 
+    public Movie(){}
+
     public Movie(int id, String title, String genre, int length, String director, String synopsis) {
         this.id = id;
         this.title = title;

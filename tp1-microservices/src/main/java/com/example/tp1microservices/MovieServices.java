@@ -25,11 +25,29 @@ public class MovieServices {
         return movie;
     }
 
-    public static Movie createMovie(int id, String title, String genre, int length, String director, String synopsis){
-        var movieToCreate = new Movie(id, title, genre, length, director, synopsis);
+    public static Movie addMovie(Movie movie){
+        var movieToCreate = new Movie(movie.getId(),movie.getTitle(),movie.getGenre(), movie.getLength(), movie.getDirector(), movie.getSynopsis());
         all_movies.add(movieToCreate);
         return movieToCreate;
     }
+
+    public static String removeMovie(int id){
+        var selectedMovie = findById(id);
+        all_movies.remove(selectedMovie);
+        return "Selected movie is deleted";
+    }
+
+    public static String modifyMovie(int id, Movie movie){
+        var selectedMovie = findById(id);
+        selectedMovie.setTitle(movie.getTitle());
+        selectedMovie.setGenre(movie.getGenre());
+        selectedMovie.setLength(movie.getLength());
+        selectedMovie.setDirector(movie.getDirector());
+        selectedMovie.setSynopsis(movie.getSynopsis());
+        all_movies.set(id, selectedMovie);
+        return "The movie is modified";
+    }
+
 
 
 }
